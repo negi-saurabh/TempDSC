@@ -1,0 +1,11 @@
+<h2>Check in Loo</h2>
+
+<ul class="sites">
+  <li *ngFor="let site of sites"
+    [class.selected]="site === selectedLoo"
+    (click)="onSelect(site)">
+    <span class="badge">{{site.siteId}}</span> {{site.nameOfBuilding}}
+  </li>
+</ul>
+
+<app-site [site]="selectedLoo"></app-site>
