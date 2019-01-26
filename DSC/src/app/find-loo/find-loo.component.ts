@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
+import { LOC } from '../mock-locations'
 
 @Component({
   selector: 'app-find-loo',
@@ -7,17 +8,26 @@ import { AgmCoreModule } from '@agm/core';
   styleUrls: ['./find-loo.component.css']
 })
 export class FindLooComponent implements OnInit {
-
+  lat: number;
+  lng: number;
+  locations = LOC;
   constructor() { }
 
   ngOnInit() {
+    this.getUserLocation()
   }
 
-  getCurrentLocation(event){
-    console.log(event);
-    this.lat = event.coords.lat;
-    this.lng = event.coords.lng;
+  private getUserLocation(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(Position =>{
+          this.lat = Position.coords.latitude;
+          this.lng = Position.coords.longitude;
+      });
+    }
   }
-  lat: number = 52.3338;
-  lng: number = 4.8657;
+
+  getLocationOnConsole(event){
+    console.log(event);
+  }
+
 }

@@ -1,4 +1,15 @@
-
-<agm-map [zoom]="15"  [latitude]="lat" [longitude]= "lng" (mapClick)="getCurrentLocation($event)">
-  <agm-marker [latitude]="lat" [longitude]= "lng"></agm-marker>
-</agm-map>
+<div *ngIf="lat && lng">
+  <agm-map [zoom]="15"  [latitude]="lat" [longitude]= "lng" (mapClick)="getLocationOnConsole($event)">
+    <agm-marker [latitude]="lat" [longitude]= "lng" >
+          <agm-info-window>
+            <h3><strong>Hello!!</strong></h3>
+            <p>You are Here</p>
+          </agm-info-window>
+    </agm-marker>
+    <agm-marker *ngFor="let loc of locations" [latitude]="loc.latitude" [longitude]= "loc.longitude" >
+          <agm-info-window>
+            <h3><strong>You can use these</strong></h3>
+          </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>
