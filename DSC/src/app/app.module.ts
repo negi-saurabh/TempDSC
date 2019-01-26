@@ -7,26 +7,33 @@ import { AppComponent } from './app.component';
 import { SiteComponent } from './site/site.component';
 import { ReviewComponent } from './review/review.component';
 import { LooComponent } from './loo/loo.component';
-import { RegisterComponent } from './register/register.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AgmCoreModule } from '@agm/core';
 
+
+import { AppRoutingModule, routingComponents } from './/app-routing.module';
 import { AuthenticationService } from './authentication.service';
 import { AuthorizationInterceptorService } from './authorization-interceptor.service';
 import { UnauthorizedInterceptorService } from './unauthorized-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
    AppComponent,
 	 SiteComponent,
 	 LooComponent,
-	 RegisterComponent
+	 LoginComponent,
+	 routingComponents
   ],
   imports: [
     BrowserModule,
 	  FormsModule,
     HttpClientModule,
-	  AppRoutingModule
+	  AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAYbsD8Sm84onWydEWjM_oMFkq_kum8Oq0' // This is a ggoglemaps API key.
+    })
   ],
   providers: [
     AuthenticationService,

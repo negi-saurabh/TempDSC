@@ -1,14 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<h1>{{title}}</h1>
-<app-loo></app-loo>
+<!--<app-loo></app-loo>--->
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
 </div>
 <nav>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/logout">Logout</a>
-  <a routerLink="/register">Register</a>
+  <button routerLink="/find-loo" class="btn1">Find Near-by Loos</button>
+  <button routerLink="/find-loo" class="btn1">Checkin Loo</button>
+  <button routerLink="/find-loo" class="btn1">Rate Loo</button>
 </nav>
+<!-- Routed Views go here -->
 <router-outlet></router-outlet>
