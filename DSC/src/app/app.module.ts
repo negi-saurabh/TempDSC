@@ -5,17 +5,15 @@ import { HttpClientModule }  from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SiteComponent } from './site/site.component';
-import { ReviewComponent } from './review/review.component';
 import { LooComponent } from './loo/loo.component';
+
 import { AgmCoreModule } from '@agm/core';
-
-
 import { AppRoutingModule, routingComponents } from './/app-routing.module';
 import { AuthenticationService } from './authentication.service';
 import { AuthorizationInterceptorService } from './authorization-interceptor.service';
 import { UnauthorizedInterceptorService } from './unauthorized-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
@@ -23,7 +21,6 @@ import { LoginComponent } from './login/login.component';
    AppComponent,
 	 SiteComponent,
 	 LooComponent,
-	 LoginComponent,
 	 routingComponents
   ],
   imports: [
