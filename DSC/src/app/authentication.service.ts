@@ -37,8 +37,10 @@ export class AuthenticationService {
 
   login(looUser:LooUser):Observable<any>{
     return this.http.post<LoginOutput>(this.userUrl+"/login", looUser,httpOptions).pipe(
+
       map(loginOutput=>{
         //login succesful
+        debugger
         if(loginOutput.id && loginOutput.userId){
           localStorage.setItem('currentUser',loginOutput.userId);
           localStorage.setItem('accessToken',loginOutput.id);
@@ -54,6 +56,7 @@ export class AuthenticationService {
     let accessToken=localStorage.getItem('accessToken');
     return this.http.post(this.userUrl+"/logout", httpOptions).pipe(
       tap(()=>{
+        debugger
         localStorage.removeItem('currentUser');
         localStorage.removeItem('accessToken');
         console.log("succesfully logged out user");

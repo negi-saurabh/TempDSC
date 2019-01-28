@@ -10,17 +10,16 @@ import { LOOSERS } from '../mock-looUsers'
 })
 export class LoginComponent implements OnInit {
 
-  //constructor(private authenticationService: AuthenticationService) { }
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) { }
+  
   looUser: LooUser;
 
   ngOnInit() {
-    this.looUser = new LooUser(); 
+    this.looUser = new LooUser();
   }
 
   onSubmit(){
-    //this.authenticationService.login(this.looUser).subscribe();
-    console.log(this.looUser);
-  }
+    this.authenticationService.login(this.looUser).subscribe();
+    }
 
 }
