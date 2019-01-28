@@ -7,11 +7,7 @@ import { LooUser } from './looUser';
 import { environment } from '../environments/environment';
 
 const httpOptions ={
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'x-ibm-client-id': 'ee832963-f350-4e06-a9e2-006fa0c262fe',
-     'x-ibm-client-secret': 'gO5wG0gR8eH1vN3sM1cB8wP4oJ8jR7eL2qU1wW5jA1lH3qP5bV'
-  })
+  headers: new HttpHeaders({'Content-Type':  'application/json'})
 };
 
 interface LoginOutput{
@@ -25,12 +21,13 @@ interface LoginOutput{
 @Injectable()
 export class AuthenticationService {
 
-  private userUrl= environment.apiBaseUrl+'/api/customers';
+  private userUrl= environment.apiBaseUrl+'/api/loousers';
 
   constructor(private http: HttpClient) { }
 
 
-  registerCustomer(looUser:LooUser):Observable<LooUser>{
+  register(looUser:LooUser):Observable<LooUser>{
+    debugger
     return this.http.post<LooUser>(this.userUrl, looUser,httpOptions).pipe(
       tap((looUser:LooUser)=>console.log('Created customer with id ='+looUser.id)),
       catchError(this.handleError<LooUser>('registerCustomer'))

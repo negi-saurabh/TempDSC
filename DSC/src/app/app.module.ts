@@ -16,12 +16,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
+
 @NgModule({
   declarations: [
    AppComponent,
 	 SiteComponent,
 	 LooComponent,
-	 routingComponents
+	 routingComponents,
   ],
   imports: [
     BrowserModule,
