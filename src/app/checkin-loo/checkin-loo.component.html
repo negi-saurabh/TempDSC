@@ -1,0 +1,35 @@
+<!-- <p>
+  You need to register before checking in any loo!!
+  Dont worry it will be a small process
+</p> -->
+<!-- <nav>
+  <button routerLink="/register" class="btn1">Register</button>
+  <button routerLink="/login" class="btn1">Login</button>
+  <button routerLink="/checkin" class="btn1">Checkin</button>
+</nav> -->
+
+<div>
+  <h1>Create a new Loo with a site</h1>
+  <form #siteForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="type">Type: </label>
+      <input type="text" [(ngModel)]="site.type" id="type" name="type" required>
+    </div>
+    <div>
+      <label for="nameOfBuilding">Name of Building: </label>
+      <input type="text" [(ngModel)]="site.nameOfBuilding" id="nameOfBuilding" name="nameOfBuilding" required>
+    </div>
+    <div>
+      <label for="openHours">Open Hours: </label>
+      <input type="text" [(ngModel)]="site.openHours" id="openHours" name="openHours" required>
+    </div>
+    <div>
+      <label for="floor">Floor: </label>
+      <input type="text" [(ngModel)]="site.floor" id="floor" name = "floor" required>
+    </div>
+    <button type="submit">Checkin</button>
+  </form>
+</div>
+
+<!-- Routed Views go here -->
+<router-outlet></router-outlet>

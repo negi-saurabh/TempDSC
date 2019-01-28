@@ -1,0 +1,30 @@
+<!-- <p>
+  review works!
+</p> -->
+
+<div>
+  <h1>Create review for Loo</h1>
+  <form #reviewForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="newRating">starRate: </label>
+      <input type="text" [(ngModel)]="review.newRating" id="newRating" name="newRating" required>
+    </div>
+    <div>
+      <label for="price">Price: </label>
+      <input type="text" [(ngModel)]="review.price" id="price" name="price" required>
+    </div>
+    <div>
+      <label for="cleaness">Cleaness: </label>
+      <input type="text" [(ngModel)]="review.cleaness" id="cleaness" name="cleaness" required>
+    </div>
+    <div>
+      <label for="disabledFriendly">DisabledFriendly: </label>
+      <input type="text" [(ngModel)]="review.disabledFriendly" id="disabledFriendly" name = "disabledFriendly" required>
+    </div>
+    <div>
+      <label for="comment">Comment: </label>
+      <input type="text" [(ngModel)]="review.comment" id="comment" name = "comment" required>
+    </div>
+    <button type="submit">Create Review</button>
+  </form>
+</div>
