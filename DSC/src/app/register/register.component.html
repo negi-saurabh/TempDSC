@@ -1,18 +1,27 @@
-<div>
-  <h1>Register as a new user</h1>
-  <form #registrationForm="ngForm" (ngSubmit)="onSubmit()">
+
+<form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+  <div class="row">
     <div>
-      <label for="name">Username</label>
-      <input type="text" [(ngModel)]="looUser.name" id="username" name="username" >
+      <i class="material-icons prefix">account_circle</i>
+      <label data-error="Field is Required" for="name">Username</label>
+      <input class="validate" type="text" [(ngModel)]="looUser.name" id="username" name="username" >
     </div>
     <div>
+      <i class="material-icons prefix">email</i>
       <label for="email">Email</label>
       <input type="text" [(ngModel)]="looUser.email" id="email" name="email" required>
     </div>
+  </div>
+  <div class="row">
     <div>
-      <label for="password">Password</label>
-      <input type="password" [(ngModel)]="looUser.password" id="password" name = "password" required>
+        <i class="material-icons prefix">vpn_key</i>
+        <label for="password">Password</label>
+        <input type="password" [(ngModel)]="looUser.password" id="password" name = "password" required>
     </div>
-    <button type="submit">Register</button>
-  </form>
-</div>
+  </div>
+  <div class="row">
+      <div class="input-field col s12">
+        <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">REGISTER</button>
+      </div>
+  </div>
+</form>

@@ -1,3 +1,49 @@
 <p>
   review works!
 </p>
+<div>
+  <h1>Create review for Loo</h1>
+  <form class="col s12 white" #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)">
+    <div>
+      <i class="material-icons prefix">attach_money</i>
+      <label for="price">Price: </label>
+      <input type="text" [(ngModel)]="review.price" id="price" name="price" required>
+    </div>
+    <div>
+      <i class="material-icons prefix">accessible</i>
+      <label for="disabledFriendly">DisabledFriendly: </label>
+      <input type="text" [(ngModel)]="review.disabledFriendly" id="disabledFriendly" name = "disabledFriendly" required>
+    </div>
+    <div>
+        <i class="material-icons prefix"></i>
+        <label for="siteid">reviewid</label>
+        <input type="number" [(ngModel)]="review.reviewid" id="reviewid" name = "reviewid">
+    </div>
+    <div>
+      <i class="material-icons prefix">comment</i>
+      <label for="comment">Comment: </label>
+      <input type="text" [(ngModel)]="review.comment" id="comment" name = "comment" required>
+    </div>
+    <div>
+        <i class="material-icons prefix"></i>
+        <label for="siteid">looUserId</label>
+        <input type="number" [(ngModel)]="review.looUserId" id="looUserId" name = "looUserId">
+    </div>
+    <div>
+        <i class="material-icons prefix"></i>
+        <label for="siteid">looId</label>
+        <input type="number" [(ngModel)]="review.looId" id="looId" name = "looId">
+    </div>
+    <div>
+      <i class="material-icons prefix">star</i>
+      <label for="newRating">StarRate: </label>
+      <input type="text" [(ngModel)]="review.newRating" id="newRating" name="newRating" required>
+    </div>
+    <div>
+      <i class="material-icons prefix">sentiment_very_satisfied</i>
+      <label for="cleaness">Cleaness: </label>
+      <input type="text" [(ngModel)]="review.cleaness" id="cleaness" name="cleaness" required>
+    </div>
+    <button class="btn-medium btn-submit" type="submit">Review the Loo</button>
+  </form>
+</div>

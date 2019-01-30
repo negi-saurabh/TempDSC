@@ -1,12 +1,42 @@
-<div *ngIf="site">
-
-  <h2>{{site.nameOfBuilding | uppercase}} Details</h2>
-  <div><span>siteId: </span>{{site.siteId}}</div>
-  <div>
-    <label>site:
-      <input [(ngModel)]="site.type" placeholder="site.type"/>
-	  <input [(ngModel)]="site.floor" placeholder="site.floor"/>
-    </label>
-  </div>
-
-</div>
+<h2>Please help other by describing the Site of the loo</h2>
+  <form class="col s12 white" #looSiteForm="ngForm" (ngSubmit)="OnSubmit(looSiteForm)">
+    <div class="row">
+      <div>
+        <select>
+          <option *ngFor="let types of types" [value]="types.type">
+            {{types.type}}
+          </option>
+        </select>
+      </div>
+      <div>
+          <i class="material-icons prefix">list</i>
+          <label for="floor">Floor</label>
+          <input type="number" [(ngModel)]="looSite.floor" id="floor" name = "floor">
+      </div>
+    <div>
+        <i class="material-icons prefix">home</i>
+        <label for="nameofthebuilding">Name of the building</label>
+        <input type="text" [(ngModel)]="looSite.nameOfBuilding" id="nameOfBuilding" name="nameOfBuilding">
+      </div>
+      <div>
+          <i class="material-icons prefix">timer</i>
+          <label for="password">OpenHours</label>
+          <input type="text" [(ngModel)]="looSite.openHours" id="openHours" name = "openHours">
+      </div>
+      <div>
+          <i class="material-icons prefix">timer</i>
+          <label for="siteid">siteid</label>
+          <input type="number" [(ngModel)]="looSite.siteid" id="siteid" name = "siteid">
+      </div>
+      <div>
+          <i class="material-icons prefix">timer</i>
+          <label for="type">type</label>
+          <input type="text" [(ngModel)]="looSite.type" id="type" name = "type">
+      </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+          <button class="btn-medium btn-submit" type="submit">NEXT</button>
+        </div>
+    </div>
+  </form>

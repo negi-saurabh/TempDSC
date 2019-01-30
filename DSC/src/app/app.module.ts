@@ -5,23 +5,21 @@ import { HttpClientModule }  from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SiteComponent } from './site/site.component';
-import { LooComponent } from './loo/loo.component';
+
 
 import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule, routingComponents } from './/app-routing.module';
 import { AuthenticationService } from './authentication.service';
+import { SiteService } from './site.service';
+import { ReviewService } from './review.service';
 import { AuthorizationInterceptorService } from './authorization-interceptor.service';
 import { UnauthorizedInterceptorService } from './unauthorized-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-
-
-
 
 @NgModule({
   declarations: [
    AppComponent,
 	 SiteComponent,
-	 LooComponent,
 	 routingComponents,
   ],
   imports: [
@@ -34,6 +32,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     })
   ],
   providers: [
+    ReviewService,
+    SiteService,
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptorService,
@@ -46,4 +46,4 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
    ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

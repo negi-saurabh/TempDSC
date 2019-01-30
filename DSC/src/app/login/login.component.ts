@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LooUser } from '../looUser';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { LOOSERS } from '../mock-looUsers'
 
@@ -10,16 +11,21 @@ import { LOOSERS } from '../mock-looUsers'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService) { }
-  
-  looUser: LooUser;
+  constructor(private authenticationService: AuthenticationService,private router:Router) { }
 
+  looUser: LooUser;
+  username : String;
   ngOnInit() {
     this.looUser = new LooUser();
+
   }
 
   onSubmit(){
-    this.authenticationService.login(this.looUser).subscribe();
+     var response=this.authenticationService.login(this.looUser).subscribe();
+     //let accessToken=localStorage.getItem('accessToken');
+     //var response=this.authenticationService.getUser().subscribe();
     }
+
+
 
 }

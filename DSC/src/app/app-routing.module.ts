@@ -6,7 +6,7 @@ import { CheckinLooComponent } from './checkin-loo/checkin-loo.component'
 import { LoginComponent } from './login/login.component';
 import { ReviewComponent } from './review/review.component';
 import { LogoutComponent } from './logout/logout.component';
-
+import { LooComponent } from './loo/loo.component';
 import { AppComponent } from './app.component';
 
 const routes : Routes =[
@@ -16,7 +16,15 @@ const routes : Routes =[
   {path : 'checkin-loo', component: CheckinLooComponent},
   {path : 'login', component: LoginComponent},
   {path : 'review', component: ReviewComponent},
-  {path : 'logout', component: LogoutComponent}
+  {path : 'logout', component: LogoutComponent},
+  {
+        path: 'register', component: CheckinLooComponent,
+        children: [{ path: '', component: RegisterComponent }]
+  },
+  {
+        path: 'login', component: CheckinLooComponent,
+        children: [{ path: '', component: LoginComponent }]
+  },{path : 'loo', component: LooComponent}
 //  {path : '', redirectTo : '/AppComponent', pathMatch : 'full'}
 ];
 @NgModule({
@@ -25,4 +33,4 @@ const routes : Routes =[
 })
 
 export class AppRoutingModule { }
-export const routingComponents = [FindLooComponent,RegisterComponent,CheckinLooComponent,LoginComponent,ReviewComponent,LogoutComponent]
+export const routingComponents = [FindLooComponent,RegisterComponent,CheckinLooComponent,LoginComponent,ReviewComponent,LogoutComponent,LooComponent]

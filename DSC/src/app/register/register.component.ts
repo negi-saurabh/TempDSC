@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { LooUser } from '../looUser';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -15,9 +16,36 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
       this.looUser = new LooUser();
+      this.resetForm();
     }
 
-    onSubmit(){
-      this.authenticationService.register(this.looUser).subscribe();
-    }
+    resetForm(form?: NgForm) {
+        if (form != null)
+          form.reset();
+        this.looUser = {
+          username: '',
+          email: '',
+          password: '',
+          id: ''
+        }
+      }
+      OnSubmit(form: NgForm) {
+        this.authenticationService.register(form.value).subscribe();
+
+
+
+
+      /**OnSubmit(form: NgForm) {
+        this.authenticationService.register(form.value)
+          .subscribe((data: any) => {
+            debugger
+            if (data.Succeeded == true) {
+              this.resetForm(form);
+              console.log("Saurabh");
+            }
+            else{
+              console.log("Negi");
+            }
+          });**/
+      }
 }

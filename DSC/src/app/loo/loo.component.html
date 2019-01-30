@@ -1,11 +1,9 @@
-<h2>Check in Loo</h2>
+<h2>Welcome</h2>
+<h3>Do you want to Check in the loo with current coordinates of your locations?? latitude:{{lat}} and longitude:{{lng}}</h3>
 
-<ul class="sites">
-  <li *ngFor="let site of sites"
-    [class.selected]="site === selectedLoo"
-    (click)="onSelect(site)">
-    <span class="badge">{{site.siteId}}</span> {{site.nameOfBuilding}}
-  </li>
-</ul>
+<button  class="btn-medium btn-submit" (click)="loadMyChildComponent()">Check-in-Loo</button>
+<div *ngIf= 'loadComponent'>
+    <app-site ></app-site>
+</div>
 
-<app-site [site]="selectedLoo"></app-site>
+<app-logout></app-logout>

@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 import { map, tap, catchError} from 'rxjs/operators';
 import { LooUser } from './looUser';
 import { environment } from '../environments/environment';
+import { Router } from '@angular/router';
 
 const httpOptions ={
   headers: new HttpHeaders({'Content-Type':  'application/json'})
@@ -23,19 +24,24 @@ export class AuthenticationService {
 
   private userUrl= environment.apiBaseUrl+'/api/loousers';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
 
 
-  register(looUser:LooUser):Observable<LooUser>{
+  register(looUser:LooUser):Observable<any>{
     debugger
     return this.http.post<LooUser>(this.userUrl, looUser,httpOptions).pipe(
-      tap((looUser:LooUser)=>console.log('Created customer with id ='+looUser.id)),
+      map((looUser:LooUser)=>{
+        console.log('Created customer with id ='+looUser.id);
+        this.router.navigate(['/loo']);
+
+      }),
       catchError(this.handleError<LooUser>('registerCustomer'))
     );
 
   }
 
   login(looUser:LooUser):Observable<any>{
+    var self=this;
     return this.http.post<LoginOutput>(this.userUrl+"/login", looUser,httpOptions).pipe(
 
       map(loginOutput=>{
@@ -44,6 +50,7 @@ export class AuthenticationService {
         if(loginOutput.id && loginOutput.userId){
           localStorage.setItem('currentUser',loginOutput.userId);
           localStorage.setItem('accessToken',loginOutput.id);
+          this.router.navigate(['/loo']);
         }
         return loginOutput;
       }),
@@ -71,6 +78,18 @@ export class AuthenticationService {
       //return the empty result so the application keeps running
       return of (result as T);
     }
+  }
+
+  getUser(): Observable<LooUser[]>{
+    let accessToken=localStorage.getItem('accessToken');
+    debugger
+    return this.http.get<LooUser[]>(this.userUrl+"/"+accessToken).pipe(
+      tap (user => {
+        console.log("get api/products");
+        console.log(user);
+      }),
+      catchError(this.handleError('getproducts',[]))
+    );
   }
 
 }
