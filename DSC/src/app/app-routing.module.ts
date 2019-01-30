@@ -8,6 +8,7 @@ import { ReviewComponent } from './review/review.component';
 import { LogoutComponent } from './logout/logout.component';
 import { LooComponent } from './loo/loo.component';
 import { AppComponent } from './app.component';
+import { SiteComponent } from './site/site.component';
 
 const routes : Routes =[
 //  {path : 'AppComponent', component: AppComponent},
@@ -17,6 +18,7 @@ const routes : Routes =[
   {path : 'login', component: LoginComponent},
   {path : 'review', component: ReviewComponent},
   {path : 'logout', component: LogoutComponent},
+  {path : 'site', component: SiteComponent},
   {
         path: 'register', component: CheckinLooComponent,
         children: [{ path: '', component: RegisterComponent }]
@@ -33,4 +35,4 @@ const routes : Routes =[
 })
 
 export class AppRoutingModule { }
-export const routingComponents = [FindLooComponent,RegisterComponent,CheckinLooComponent,LoginComponent,ReviewComponent,LogoutComponent,LooComponent]
+export const routingComponents = [FindLooComponent,RegisterComponent,CheckinLooComponent,LoginComponent,ReviewComponent,LogoutComponent,LooComponent,SiteComponent]

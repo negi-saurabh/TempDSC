@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule }  from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { SiteComponent } from './site/site.component';
+
 
 
 import { AgmCoreModule } from '@agm/core';
@@ -19,7 +19,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [
    AppComponent,
-	 SiteComponent,
 	 routingComponents,
   ],
   imports: [
