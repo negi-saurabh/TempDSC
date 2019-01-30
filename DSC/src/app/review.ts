@@ -6,5 +6,5 @@ export class Review {
   looUserId: number;
   looId: number;
   newRating: number;
-  cleanlinessLevel: number;
+  cleanliness: number;
 }

@@ -35,7 +35,7 @@ export class LooComponent implements OnInit {
     this.getUserLocation();
   }
 
-  private loadComponent = false;
+  public loadComponent = false;
   loadMyChildComponent(){
        console.log(this.loadComponent);
        this.loadComponent = true;

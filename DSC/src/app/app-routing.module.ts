@@ -19,14 +19,7 @@ const routes : Routes =[
   {path : 'review', component: ReviewComponent},
   {path : 'logout', component: LogoutComponent},
   {path : 'site', component: SiteComponent},
-  {
-        path: 'register', component: CheckinLooComponent,
-        children: [{ path: '', component: RegisterComponent }]
-  },
-  {
-        path: 'login', component: CheckinLooComponent,
-        children: [{ path: '', component: LoginComponent }]
-  },{path : 'loo', component: LooComponent}
+  {path : 'loo', component: LooComponent}
 //  {path : '', redirectTo : '/AppComponent', pathMatch : 'full'}
 ];
 @NgModule({

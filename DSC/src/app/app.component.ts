@@ -20,11 +20,11 @@ export class AppComponent {
           debugger
           this.user = localStorage.getItem('currentUser');
           this.token = localStorage.getItem('accessToken');
-          if(this.user == '' && this.token == ''){
-            this.router.navigate(['/checkin-loo']);
-          } else {
-            this.router.navigate(['/site']);
-          }
+          if(!!this.user && !!this.token){
+             this.router.navigate(['/site']);
+           } else {
+             this.router.navigate(['/checkin-loo']);
+           }
       }
 
     loadChildComponentloadforRating(){
@@ -33,11 +33,11 @@ export class AppComponent {
            debugger
            this.user = localStorage.getItem('currentUser');
            this.token = localStorage.getItem('accessToken');
-           if(this.user == '' && this.token == ''){
-             this.router.navigate(['/checkin-loo']);
-           } else {
+           if(!!this.user && !!this.token){
              this.router.navigate(['/find-loo']);
-           }
+           } else {
+             this.router.navigate(['/checkin-loo']);
+         }
         }
 
 }
