@@ -31,11 +31,10 @@ export class AuthenticationService {
     debugger
     return this.http.post<LooUser>(this.userUrl, looUser,httpOptions).pipe(
       map((looUser:LooUser)=>{
-        console.log('Created customer with id ='+looUser.id);
+        console.log('Created user with id ='+looUser.id);
         this.router.navigate(['/loo']);
-
       }),
-      catchError(this.handleError<LooUser>('registerCustomer'))
+      catchError(this.handleError<LooUser>('registerUser'))
     );
 
   }
