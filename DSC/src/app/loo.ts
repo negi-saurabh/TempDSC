@@ -1,7 +1,8 @@
 export class Loo {
-  looId: number;
-  looUserId: number;
   generalRating: number;
+  looId: number;
   looLatitude: number;
   looLongitude: number;
+  looUserId: number;
+  siteId: number;  
 }

@@ -33,7 +33,7 @@ export class SiteComponent implements OnInit {
   OnSubmit(form: NgForm) {
     debugger
     //submit the site and save the site id in Loo
-    // this.siteService.registerSite(form.value).subscribe();
+    this.siteService.registerSite(form.value).subscribe();
     this.router.navigate(['/review']);
   }
 

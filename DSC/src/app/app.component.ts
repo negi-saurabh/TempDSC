@@ -16,7 +16,7 @@ export class AppComponent {
     private token;
     loadChildComponentforCheckin(){
         //need to check if user is already logged in. if not send false
-          console.log("Saurabh")
+
           debugger
           this.user = localStorage.getItem('currentUser');
           this.token = localStorage.getItem('accessToken');
@@ -29,7 +29,7 @@ export class AppComponent {
 
     loadChildComponentloadforRating(){
            //need to check if user is already logged in. if not send false
-           console.log("other")
+           
            debugger
            this.user = localStorage.getItem('currentUser');
            this.token = localStorage.getItem('accessToken');
@@ -39,5 +39,4 @@ export class AppComponent {
              this.router.navigate(['/checkin-loo']);
          }
         }
-
 }

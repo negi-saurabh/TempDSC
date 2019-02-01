@@ -6,6 +6,8 @@ import { map, tap, catchError} from 'rxjs/operators';
 import { LooUser } from './looUser';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
+import { Loo } from './loo';
+import { Subject } from 'rxjs/Subject';
 
 const httpOptions ={
   headers: new HttpHeaders({'Content-Type':  'application/json'})
@@ -22,13 +24,24 @@ interface LoginOutput{
 @Injectable()
 export class LooService {
 
-  private userUrl= environment.apiBaseUrl+'/api/loos';
+  private looUrl= environment.apiBaseUrl+'/api/loos';
 
   constructor(private http: HttpClient,private router:Router) { }
 
+  private needsRefreshSubject = new Subject<boolean>();
+
+  listNeedsRefresh = this.needsRefreshSubject.asObservable();
+
+
+  triggerRefresh(needsRefresh) {
+    //this means that the Subject will multicast
+    //the value needsRefresh to all subscribers
+    this.needsRefreshSubject.next(needsRefresh);
+  }
+
   checkin(looUser:LooUser):Observable<any>{
     debugger
-    return this.http.post<LooUser>(this.userUrl, looUser,httpOptions).pipe(
+    return this.http.post<LooUser>(this.looUrl, looUser,httpOptions).pipe(
       map((looUser:LooUser)=>{
         console.log('Created customer with id ='+looUser.id);
         this.router.navigate(['/loo']);
@@ -38,39 +51,17 @@ export class LooService {
     );
   }
 
-  login(looUser:LooUser):Observable<any>{
-    var self=this;
-    return this.http.post<LoginOutput>(this.userUrl+"/login", looUser,httpOptions).pipe(
-
-      map(loginOutput=>{
-        //login succesful
-        debugger
-        if(loginOutput.id && loginOutput.userId){
-          localStorage.setItem('currentUser',loginOutput.userId);
-          localStorage.setItem('accessToken',loginOutput.id);
-          this.router.navigate(['/loo']);
-        }
-        return loginOutput;
+  getNearbyLoos(): Observable<Loo[]>{
+    return this.http.get<Loo[]>(this.looUrl).pipe(
+      tap (loo => {
+        console.log("get api/loos");
+        console.log(loo);
       }),
-      catchError(this.handleError<LooUser>('login Customer'))
-    );
-
-  }
-
-  logout():Observable<any>{
-    let accessToken=localStorage.getItem('accessToken');
-    return this.http.post(this.userUrl+"/logout", httpOptions).pipe(
-      tap(()=>{
-        debugger
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('accessToken');
-        console.log("succesfully logged out user");
-      }),
-      catchError(this.handleError('logout Customer'))
+      catchError(this.handleError('getproducts',[]))
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T){
+private handleError<T> (operation = 'operation', result?: T){
     return(error: any): Observable<T> => {
       console.error(error);
       //return the empty result so the application keeps running
@@ -81,7 +72,7 @@ export class LooService {
   getUser(): Observable<LooUser[]>{
     let accessToken=localStorage.getItem('accessToken');
     debugger
-    return this.http.get<LooUser[]>(this.userUrl+"/"+accessToken).pipe(
+    return this.http.get<LooUser[]>(this.looUrl+"/"+accessToken).pipe(
       tap (user => {
         console.log("get api/products");
         console.log(user);

@@ -30,9 +30,9 @@ export class ReviewService {
     debugger
     return this.http.post<Review>(this.userUrl, review,httpOptions).pipe(
       map((review:Review)=>{
-        console.log('Created site with id ='+review.reviewid);
+        console.log('Review created with id ='+review.reviewid);
         }),
-      catchError(this.handleError<LooUser>('registerCustomer'))
+      catchError(this.handleError<LooUser>('Create Review'))
     );
 }
 

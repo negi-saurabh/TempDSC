@@ -2,15 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule }  from '@angular/common/http';
-
 import { AppComponent } from './app.component';
-
-
 
 import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule, routingComponents } from './/app-routing.module';
 import { AuthenticationService } from './authentication.service';
-import { SiteService } from './site.service';
+import { SiteService } from './site.service'; 
+import { LooService } from './loo.service';
 import { ReviewService } from './review.service';
 import { AuthorizationInterceptorService } from './authorization-interceptor.service';
 import { UnauthorizedInterceptorService } from './unauthorized-interceptor.service';
@@ -31,6 +29,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     })
   ],
   providers: [
+    LooService,
     ReviewService,
     SiteService,
     AuthenticationService,
