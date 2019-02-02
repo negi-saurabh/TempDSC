@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkin-loo',
@@ -7,11 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckinLooComponent implements OnInit {
 
-  constructor() { }
+  private user;
+  private token;
+  loouser: string;
+  islogin: boolean;
+
+  constructor(private router:Router) { }
 
   ngOnInit() {
+    debugger
+    this.user = localStorage.getItem('currentUser');
+    if(!!this.user){
+        this.islogin = true;
+        this.router.navigate(['/site']);
+    } else {
+        this.islogin = false;
+      }
+
   }
+
   onSubmit(){
-      
+
   }
 }

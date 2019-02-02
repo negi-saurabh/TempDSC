@@ -41,6 +41,7 @@ export class AuthenticationService {
 
   login(looUser:LooUser):Observable<any>{
     var self=this;
+    var username = localStorage.getItem('username');
     return this.http.post<LoginOutput>(this.userUrl+"/login", looUser,httpOptions).pipe(
 
       map(loginOutput=>{
@@ -49,7 +50,8 @@ export class AuthenticationService {
         if(loginOutput.id && loginOutput.userId){
           localStorage.setItem('currentUser',loginOutput.userId);
           localStorage.setItem('accessToken',loginOutput.id);
-          this.router.navigate(['/loo']);
+          alert('Welcome  '+username);
+          //this.router.navigate(['/loo']);
         }
         return loginOutput;
       }),
@@ -75,6 +77,7 @@ export class AuthenticationService {
     return(error: any): Observable<T> => {
       console.error(error);
       //return the empty result so the application keeps running
+      alert("Please use a different username or emailId");
       return of (result as T);
     }
   }

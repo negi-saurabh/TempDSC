@@ -15,13 +15,17 @@ export class LoginComponent implements OnInit {
 
   looUser: LooUser;
   username : String;
+
   ngOnInit() {
-    this.looUser = new LooUser();
+
+    //this.looUser = new LooUser();
+    this.username = localStorage.getItem('username');
 
   }
 
   onSubmit(){
      var response=this.authenticationService.login(this.looUser).subscribe();
+     this.router.navigate(['/']);
      //let accessToken=localStorage.getItem('accessToken');
      //var response=this.authenticationService.getUser().subscribe();
     }
