@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { LooUser } from '../looUser';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-    constructor(private authenticationService: AuthenticationService) { }
+    constructor(private authenticationService: AuthenticationService,private router:Router) { }
 
     looUser: LooUser;
 
@@ -31,9 +32,7 @@ export class RegisterComponent implements OnInit {
       }
       OnSubmit(form: NgForm) {
         this.authenticationService.register(form.value).subscribe();
-
-
-
+        this.router.navigate(['/checkin-loo']);
 
       /**OnSubmit(form: NgForm) {
         this.authenticationService.register(form.value)

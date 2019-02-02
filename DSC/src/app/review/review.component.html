@@ -1,6 +1,3 @@
-<p>
-  review works!
-</p>
 <div>
   <h1>Create review for Loo</h1>
   <form class="col s12 white" #reviewForm="ngForm" (ngSubmit)="OnSubmit(reviewForm)">
@@ -11,28 +8,20 @@
     </div>
     <div>
       <i class="material-icons prefix">accessible</i>
-      <label for="disabledFriendly">DisabledFriendly: </label>
-      <input type="text" [(ngModel)]="review.disabledFriendly" id="disabledFriendly" name = "disabledFriendly" required>
-    </div>
-    <div>
-        <i class="material-icons prefix"></i>
-        <label for="siteid">reviewid</label>
-        <input type="number" [(ngModel)]="review.reviewid" id="reviewid" name = "reviewid">
+      <label>isDisableFriendly</label>
+      <label>
+            <input type="radio" name="disabledFriendly" [(ngModel)]="review.disabledFriendly" [value]="true" required />
+            yes
+      </label>
+      <label>
+            <input type="radio" name="disabledFriendly" [(ngModel)]="review.disabledFriendly" [value]="false" required />
+            no
+      </label>
     </div>
     <div>
       <i class="material-icons prefix">comment</i>
       <label for="comment">Comment: </label>
       <input type="text" [(ngModel)]="review.comment" id="comment" name = "comment" required>
-    </div>
-    <div>
-        <i class="material-icons prefix"></i>
-        <label for="siteid">looUserId</label>
-        <input type="number" [(ngModel)]="review.looUserId" id="looUserId" name = "looUserId">
-    </div>
-    <div>
-        <i class="material-icons prefix"></i>
-        <label for="siteid">looId</label>
-        <input type="number" [(ngModel)]="review.looId" id="looId" name = "looId">
     </div>
     <div>
       <i class="material-icons prefix">star</i>

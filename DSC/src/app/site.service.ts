@@ -23,18 +23,18 @@ interface LoginOutput{
 @Injectable()
 export class SiteService {
 
-  private userUrl= environment.apiBaseUrl+'/api/sites';
+  private siteUrl= environment.apiBaseUrl+'/api/sites';
 
   constructor(private http: HttpClient,private router:Router) { }
 
 
   registerSite(site:Site):Observable<any>{
     debugger
-    return this.http.post<Site>(this.userUrl, site,httpOptions).pipe(
+    return this.http.post<Site>(this.siteUrl, site,httpOptions).pipe(
       map((site:Site)=>{
         console.log('Created site with id ='+site.siteId);
-        this.router.navigate(['/review']);
-      }),
+        localStorage.setItem('siteid',site.siteId);
+        }),
       catchError(this.handleError<LooUser>('registerCustomer'))
     );
 }

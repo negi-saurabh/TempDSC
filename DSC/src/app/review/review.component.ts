@@ -12,11 +12,25 @@ import { Review } from '../review';
 export class ReviewComponent implements OnInit {
 
   review: Review
+  private user;
+  private token;
+  loouser: string;
+  islogin: boolean;
+
 
   constructor(private reviewService: ReviewService,private router:Router) { }
 
   ngOnInit() {
     this.review = new Review();
+    debugger
+    this.user = localStorage.getItem('currentUser');
+    if(!!this.user){
+        this.islogin = true;
+        this.router.navigate(['/find-loo']);
+    } else {
+        this.islogin = false;
+      }
+
   }
 
   OnSubmit(form: NgForm) {

@@ -1,8 +1,10 @@
-<app-logout></app-logout>
-<h2>Please help other by describing the Site of the loo</h2>
+<h5>Welcome, User {{loouser}}</h5>
+<h4>You are checking in the loo at latitude:{{lat}} and longitude:{{lng}} , Please help us to decribe the Site of the Loo</h4>
+
   <form class="col s12 white" #looSiteForm="ngForm" (ngSubmit)="OnSubmit(looSiteForm)">
     <div class="row">
       <div>
+        <label>Types</label>
         <select>
           <option *ngFor="let types of types" [value]="types.type">
             {{types.type}}
@@ -14,20 +16,15 @@
           <label for="floor">Floor</label>
           <input type="number" [(ngModel)]="looSite.floor" id="floor" name = "floor">
       </div>
-    <div>
+      <div>
         <i class="material-icons prefix">home</i>
         <label for="nameofthebuilding">Name of the building</label>
         <input type="text" [(ngModel)]="looSite.nameOfBuilding" id="nameOfBuilding" name="nameOfBuilding">
       </div>
       <div>
           <i class="material-icons prefix">timer</i>
-          <label for="password">OpenHours</label>
+          <label for="openHours">OpenHours</label>
           <input type="text" [(ngModel)]="looSite.openHours" id="openHours" name = "openHours">
-      </div>
-      <div>
-          <i class="material-icons prefix">timer</i>
-          <label for="siteid">siteId</label>
-          <input type="number" [(ngModel)]="looSite.siteId" id="siteId" name = "siteId">
       </div>
       <div>
           <i class="material-icons prefix">timer</i>
@@ -41,3 +38,4 @@
         </div>
     </div>
   </form>
+<app-logout *ngIf="islogin" ></app-logout>

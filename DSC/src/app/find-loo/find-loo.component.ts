@@ -16,6 +16,7 @@ export class FindLooComponent implements OnInit {
   locations = LOC;
   looLocations: Loo[];
   loo: Loo;
+  icon: object;
 
   allLoc: Location[];
   constructor(private looService: LooService){}
@@ -27,6 +28,13 @@ export class FindLooComponent implements OnInit {
        if(needsRefresh)
         this.getNearbyLoos();
     });
+    this.icon = {
+              url: '../../assets/images/loo2.png',
+              scaledSize: {
+                width: 40,
+                height: 40
+              }
+}
   }
 
   private getUserLocation(){

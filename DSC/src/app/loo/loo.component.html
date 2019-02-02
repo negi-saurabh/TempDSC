@@ -1,9 +1,6 @@
-<h2>Welcome</h2>
-<h3>Do you want to Check in the loo with current coordinates of your locations?? latitude:{{lat}} and longitude:{{lng}}</h3>
-
-<button  class="btn-medium btn-submit" (click)="loadMyChildComponent()">Check-in-Loo</button>
+<h2>LOO</h2>
+<button  class="btn-medium btn-submit" (click)="OnSubmit()">Check-in-Loo</button>
 <div *ngIf='loadComponent'>
     <app-site ></app-site>
 </div>
-
-<app-logout></app-logout>
+<app-logout *ngIf="islogin" ></app-logout>

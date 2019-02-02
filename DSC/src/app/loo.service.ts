@@ -39,13 +39,14 @@ export class LooService {
     this.needsRefreshSubject.next(needsRefresh);
   }
 
-  checkin(looUser:LooUser):Observable<any>{
+  checkin(loo:Loo):Observable<any>{
     debugger
-    return this.http.post<LooUser>(this.looUrl, looUser,httpOptions).pipe(
-      map((looUser:LooUser)=>{
-        console.log('Created customer with id ='+looUser.id);
-        this.router.navigate(['/loo']);
-
+    var siteId = {"siteId": 3};
+    var obj = Object.assign(loo,siteId)
+    return this.http.post<Loo>(this.looUrl, obj,httpOptions).pipe(
+      map((loo:Loo)=>{
+        console.log('Created customer with id ='+loo.looId);
+        localStorage.setItem('looId',loo.looId);
       }),
       catchError(this.handleError<LooUser>('registerCustomer'))
     );

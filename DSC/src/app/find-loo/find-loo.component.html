@@ -5,8 +5,9 @@
             <h3><strong>Hello!!</strong></h3>
             <p>You are Here</p>
           </agm-info-window>
+          icon
     </agm-marker>
-    <agm-marker *ngFor="let loc of looLocations" [latitude]="loc.looLatitude" [longitude]= "loc.looLongitude" >
+    <agm-marker *ngFor="let loc of looLocations" [latitude]="loc.looLatitude" [longitude]= "loc.looLongitude"  [iconUrl]="icon">
           <agm-info-window>
             <h3><strong>You can use these</strong></h3>
           </agm-info-window>
