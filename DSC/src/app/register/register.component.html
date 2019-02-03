@@ -1,27 +1,31 @@
 
-<form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
-  <div class="row">
-    <div>
-      <i class="material-icons prefix">account_circle</i>
-      <label data-error="Field is Required" for="name">Username</label>
-      <input class="validate" type="text" [(ngModel)]="looUser.username" id="username" name="username" >
+<div class="ui centered card">
+    <div class="content">
+      <form class="ui form" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+        <div class="ui form">
+          <div class="required field">
+            <label>Username</label>
+            <div class="ui left icon input">
+              <input type="text" placeholder="Username" [(ngModel)]="looUser.username" id="username" name="username" required>
+              <i class="user icon"></i>
+            </div>
+          </div>
+          <div class="required field">
+            <label>email</label>
+            <div class="ui left icon input">
+              <input type="email" placeholder="abc@xyz.com" [(ngModel)]="looUser.email" id="email" name="email" required>
+              <i class="envelope  icon"></i>
+            </div>
+          </div>
+          <div class="required field">
+            <label>Password</label>
+            <div class="ui left icon input">
+              <input type="password" [(ngModel)]="looUser.password" id="password" name = "password" require>
+              <i class="lock icon"></i>
+            </div>
+          </div>
+          <button class="blue fluid ui button" [disabled]="!userRegistrationForm.valid" type="submit">Register</button>
+        </div>
+      </form>
     </div>
-    <div>
-      <i class="material-icons prefix">email</i>
-      <label for="email">Email</label>
-      <input type="text" [(ngModel)]="looUser.email" id="email" name="email" required>
-    </div>
-  </div>
-  <div class="row">
-    <div>
-        <i class="material-icons prefix">vpn_key</i>
-        <label for="password">Password</label>
-        <input type="password" [(ngModel)]="looUser.password" id="password" name = "password" required>
-    </div>
-  </div>
-  <div class="row">
-      <div class="input-field col s12">
-        <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">REGISTER</button>
-      </div>
-  </div>
-</form>
+</div>

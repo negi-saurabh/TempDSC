@@ -30,8 +30,7 @@ export class SiteComponent implements OnInit {
     this.user = localStorage.getItem('currentUser');
     this.token = localStorage.getItem('accessToken');
     this.loouser = localStorage.getItem('username');
-    
-    if(!!this.user){
+    if(!!this.user && !!this.token){
         this.islogin = true;
     } else {
         this.islogin = false;
@@ -51,7 +50,11 @@ export class SiteComponent implements OnInit {
   OnSubmit(form: NgForm) {
     debugger
     //submit the site and save the site id in Loo
-    this.siteService.registerSite(form.value).subscribe();
+    this.siteService.registerSite(form.value).subscribe(data=>{
+      debugger
+      let site = data;
+      console.log(site.id);
+    });
     this.router.navigate(['/loo']);
   }
 

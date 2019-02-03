@@ -7,9 +7,11 @@
           </agm-info-window>
           icon
     </agm-marker>
-    <agm-marker *ngFor="let loc of looLocations" [latitude]="loc.looLatitude" [longitude]= "loc.looLongitude"  [iconUrl]="icon">
+    <agm-marker *ngFor="let loc of looLocations;let i= index" [latitude]="loc.looLatitude" [longitude]= "loc.looLongitude"  [iconUrl]="icon" (markerClick)="markerClicked(loc, i)">
           <agm-info-window>
-            <h3><strong>You can use these</strong></h3>
+            <h3><strong>Loo Cumulative General Rating::{{generalRating}}</strong></h3>
+            <h3><strong>Loo's Latitude::{{i.marLat}}</strong></h3>
+            <h3><strong>Loo's Longitude::{{i.marLng}}</strong></h3>
           </agm-info-window>
     </agm-marker>
   </agm-map>

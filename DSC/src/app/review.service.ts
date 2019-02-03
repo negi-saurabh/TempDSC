@@ -26,13 +26,19 @@ export class ReviewService {
 
   constructor(private http: HttpClient,private router:Router) { }
 
-  registerReviews(review:Review):Observable<any>{
+    registerReviews(review:Review):Observable<any>{
     debugger
-    return this.http.post<Review>(this.userUrl, review,httpOptions).pipe(
-      map((review:Review)=>{
-        console.log('Review created with id ='+review.reviewid);
+    var looId = {"looId" :localStorage.getItem('looId')};
+    var looUserId = {"looUserId":localStorage.getItem('currentUser')};
+    var obj = Object.assign(review,looId)
+    var obj2 = Object.assign(obj,looUserId)
+
+    return this.http.post<Review>(this.userUrl, obj2,httpOptions).pipe(
+      map(review=>{
+        console.log('Created site with id ='+review.reviewid);
+        localStorage.setItem('reviewid',review.reviewid);
         }),
-      catchError(this.handleError<LooUser>('Create Review'))
+      catchError(this.handleError<Review>('Create Review'))
     );
 }
 

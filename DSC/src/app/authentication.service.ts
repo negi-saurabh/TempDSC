@@ -35,8 +35,8 @@ export class AuthenticationService {
         localStorage.setItem('currentUser',looUser.id);
         localStorage.setItem('username',looUser.username);
         //localStorage.setItem('accessToken',loginOutput.id);
-        alert('Successfully Registered With Username -' + looUser.username + 'please log-in');
-        this.router.navigate(['/login']);
+        alert('Successfully Registered With Username\n' + looUser.username + '\nPlease log-in');
+        this.router.navigate(['/check-loo']);
       }),
       catchError(this.handleError<LooUser>('registerUser'))
     );
@@ -45,6 +45,7 @@ export class AuthenticationService {
 
   login(looUser:LooUser):Observable<any>{
     var self=this;
+    debugger
     var username = localStorage.getItem('username');
     return this.http.post<LoginOutput>(this.userUrl+"/login", looUser,httpOptions).pipe(
       map(loginOutput=>{
@@ -52,7 +53,7 @@ export class AuthenticationService {
           if(loginOutput.id && loginOutput.userId){
           localStorage.setItem('currentUser',loginOutput.userId);
           localStorage.setItem('accessToken',loginOutput.id);
-          alert('Welcome  '+username);
+          alert('Welcome');
           //this.router.navigate(['/']);
         }
         return loginOutput;
@@ -70,9 +71,10 @@ export class AuthenticationService {
         debugger
         localStorage.removeItem('currentUser');
         localStorage.removeItem('accessToken');
+        localStorage.removeItem('Username');
         console.log("succesfully logged out user");
         alert('succesfully logged out');
-        this.router.navigate(['/']);
+        this.router.navigate(['/find-loo']);
       }),
       catchError(this.handleError('logout Customer'))
     );

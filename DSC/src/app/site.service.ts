@@ -28,14 +28,16 @@ export class SiteService {
   constructor(private http: HttpClient,private router:Router) { }
 
 
-  registerSite(site:Site):Observable<any>{
+  registerSite(site:Site):Observable<Site>{
     debugger
+    console.log(site)
     return this.http.post<Site>(this.siteUrl, site,httpOptions).pipe(
-      map((site:Site)=>{
-        console.log('Created site with id ='+site.siteId);
-        localStorage.setItem('siteid',site.siteId);
+      tap(site=>{
+        debugger
+        console.log('Created site with id ='+site.id);
+        localStorage.setItem('siteid',site.id);
         }),
-      catchError(this.handleError<LooUser>('registerCustomer'))
+      catchError(this.handleError<Site>('registerCustomer'))
     );
 }
 

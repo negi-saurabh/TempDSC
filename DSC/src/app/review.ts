@@ -1,10 +1,11 @@
 export class Review {
   price: number;
   disabledFriendly: boolean;
-  reviewid: NumberConstructor;
+  reviewid: string;
   comment: string;
-  looUserId: number;
-  looId: number;
+  cleaness:string;
+  looUserId: string;
+  looId: string;
   newRating: number;
   cleanliness: number;
 }

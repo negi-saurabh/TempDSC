@@ -1,9 +1,5 @@
 <!--<app-loo></app-loo>--->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!!
-  </h1>
-</div>
+
 <nav>
   <div class="three ui buttons">
     <button routerLink="/find-loo" class="ui button">Find Near-by Loos</button>
@@ -11,12 +7,12 @@
     <div *ngIf='loadComponent'>
         <app-checkin-loo></app-checkin-loo>
     </div>-->
-    <button routerLink="/checkin-loo" class="ui button">Checkin Loo</button>
+    <button routerLink="/checkin-loo" class="ui button" >Checkin Loo</button>
     <!--<button  class="ui button" (click)="loadChildComponentloadforRating()">Rate Loo</button>
     <div *ngIf= 'loadComponent'>
         <app-find-loo></app-find-loo>
     </div>-->
-    <button routerLink="/review" class="ui button">Rate Loo</button>
+    <button routerLink="/find-loo" class="ui button">Rate Loo</button>
   </div>
 </nav>
 <!-- Routed Views go here -->

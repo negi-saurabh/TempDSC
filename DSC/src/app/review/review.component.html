@@ -1,38 +1,58 @@
-<div>
-  <h1>Create review for Loo</h1>
-  <form class="col s12 white" #reviewForm="ngForm" (ngSubmit)="OnSubmit(reviewForm)">
-    <div>
-      <i class="material-icons prefix">attach_money</i>
-      <label for="price">Price: </label>
-      <input type="text" [(ngModel)]="review.price" id="price" name="price" required>
-    </div>
-    <div>
-      <i class="material-icons prefix">accessible</i>
-      <label>isDisableFriendly</label>
-      <label>
-            <input type="radio" name="disabledFriendly" [(ngModel)]="review.disabledFriendly" [value]="true" required />
-            yes
-      </label>
-      <label>
-            <input type="radio" name="disabledFriendly" [(ngModel)]="review.disabledFriendly" [value]="false" required />
-            no
-      </label>
-    </div>
-    <div>
-      <i class="material-icons prefix">comment</i>
-      <label for="comment">Comment: </label>
-      <input type="text" [(ngModel)]="review.comment" id="comment" name = "comment" required>
-    </div>
-    <div>
-      <i class="material-icons prefix">star</i>
-      <label for="newRating">StarRate: </label>
-      <input type="text" [(ngModel)]="review.newRating" id="newRating" name="newRating" required>
-    </div>
-    <div>
-      <i class="material-icons prefix">sentiment_very_satisfied</i>
-      <label for="cleaness">Cleaness: </label>
-      <input type="text" [(ngModel)]="review.cleanliness" id="cleanliness" name="cleanliness" required>
-    </div>
-    <button class="btn-medium btn-submit" type="submit">Review the Loo</button>
-  </form>
+<div class="ui one cards">
+  <div class="card">
+      <div class="content">
+        <form class="ui form" #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm)">
+          <div class="ui equal width form">
+            <h4 class="ui dividing header">Please Review the Loo you used</h4>
+            <div class="fields">
+              <div class="field">
+                <label>Price</label>
+                <div class="ui left icon input">
+                  <input type="text" [(ngModel)]="review.price" id="price" name="price" required>
+                  <i class="dollar sign icon"></i>
+                </div>
+              </div>
+              <div class="field">
+                  <i class="star outline icon"></i>
+                  <label>isDisableFriendly</label>
+                  <label>
+                        <input type="radio" name="disabledFriendly" [(ngModel)]="review.disabledFriendly" [value]="true" required />
+                        yes
+                  </label>
+                  <label>
+                        <input type="radio" name="disabledFriendly" [(ngModel)]="review.disabledFriendly" [value]="false" required />
+                        no
+                  </label>
+              </div>
+            </div>
+            <div class="fields">
+              <div class="field">
+                <label>Comment</label>
+                <div class="ui left icon input">
+                  <input type="text" [(ngModel)]="review.comment" id="comment" name = "comment" required>
+                  <i class="comment outline icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="fields">
+              <div class="field">
+                <label>StarRate</label>
+                <div class="ui left icon input">
+                  <input type="text" [(ngModel)]="review.newRating" id="newRating" name="newRating" required>
+                  <i class="star outline icon"></i>
+                </div>
+              </div>
+              <div class="field">
+                <label>Cleaness</label>
+                <div class="ui left icon input">
+                  <input type="text" [(ngModel)]="review.cleaness" id="cleaness" name="cleaness" required>
+                  <i class="dollar sign icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="ui button" type="submit">Review the Loo</button>
+        </form>
+      </div>
+  </div>
 </div>

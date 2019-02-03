@@ -4,6 +4,8 @@ import { LOC } from '../mock-locations'
 import { LooService } from '../loo.service';
 import { Loo } from '../loo';
 import { Location } from '../location';
+import { Router } from '@angular/router';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-find-loo',
@@ -17,9 +19,14 @@ export class FindLooComponent implements OnInit {
   looLocations: Loo[];
   loo: Loo;
   icon: object;
+  private user;
+  private token;
+  generalRating : number;
+  marLat: number;
+  marLng: number;
 
   allLoc: Location[];
-  constructor(private looService: LooService){}
+  constructor(private looService: LooService,private router:Router){}
 
   ngOnInit() {
     this.getUserLocation()
@@ -34,8 +41,8 @@ export class FindLooComponent implements OnInit {
                 width: 40,
                 height: 40
               }
-}
-  }
+            }
+    }
 
   private getUserLocation(){
       if(navigator.geolocation){
@@ -58,4 +65,18 @@ export class FindLooComponent implements OnInit {
   getLocationOnConsole(event){
     console.log(event);
   }
+
+  markerClicked(loc, i) {
+    debugger
+    console.log('clicked');
+    console.log(loc);
+    this.marLat=loc.looLatitude;
+    this.marLng=loc.looLongitude;
+    this.generalRating = loc.generalRating;
+    localStorage.removeItem('purpose');
+    localStorage.setItem('purpose',"RL");
+    localStorage.setItem('markerLat',this.marLat.toString());
+    localStorage.setItem('markerLong',this.marLng.toString());
+    this.router.navigate(['/login']);
+    }
 }

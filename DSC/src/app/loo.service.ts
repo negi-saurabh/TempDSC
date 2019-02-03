@@ -41,14 +41,12 @@ export class LooService {
 
   checkin(loo:Loo):Observable<any>{
     debugger
-    var siteId = {"siteId": 3};
-    var obj = Object.assign(loo,siteId)
-    return this.http.post<Loo>(this.looUrl, obj,httpOptions).pipe(
-      map((loo:Loo)=>{
+    return this.http.post<Loo>(this.looUrl,loo,httpOptions).pipe(
+      map(loo =>{
         console.log('Created customer with id ='+loo.looId);
         localStorage.setItem('looId',loo.looId);
       }),
-      catchError(this.handleError<LooUser>('registerCustomer'))
+      catchError(this.handleError<Loo>('registerCustomer'))
     );
   }
 
@@ -62,6 +60,29 @@ export class LooService {
     );
   }
 
+  getNearbyLatlong(): Observable<Loo[]>{
+    debugger
+    var marLat = localStorage.getItem('markerLat');
+    var marLng = localStorage.getItem('markerLong');
+    return this.http.get<Loo[]>(this.looUrl+"/"+marLat,httpOptions).pipe(
+      tap(loo=>{
+        debugger
+        console.log('Created site with id ='+loo);
+        }),
+      catchError(this.handleError('getproducts',[]))
+    );
+  }
+
+
+  getMarkerLoo(loo:Loo): Observable<Loo[]>{
+      return this.http.get<Loo[]>(this.looUrl).pipe(
+        tap (loo => {
+          console.log("get api/loos");
+          console.log(loo);
+        }),
+        catchError(this.handleError('getproducts',[]))
+      );
+    }
 private handleError<T> (operation = 'operation', result?: T){
     return(error: any): Observable<T> => {
       console.error(error);
@@ -69,6 +90,8 @@ private handleError<T> (operation = 'operation', result?: T){
       return of (result as T);
     }
   }
+
+
 
   getUser(): Observable<LooUser[]>{
     let accessToken=localStorage.getItem('accessToken');

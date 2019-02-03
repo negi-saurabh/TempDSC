@@ -4,5 +4,5 @@ export class Loo {
   looLatitude: number;
   looLongitude: number;
   looUserId: number;
-  siteId: number;
+  siteId: String;
 }
