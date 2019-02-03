@@ -55,6 +55,15 @@ export class AuthenticationService {
           localStorage.setItem('accessToken',loginOutput.id);
           alert('Welcome');
           //this.router.navigate(['/']);
+
+          let purpose=localStorage.getItem('purpose');
+          debugger
+          if(purpose==="CL"){
+            this.router.navigate(['/site']);
+          }
+          else if (purpose==="RL"){
+            this.router.navigate(['/review']);
+          }
         }
         return loginOutput;
       }),

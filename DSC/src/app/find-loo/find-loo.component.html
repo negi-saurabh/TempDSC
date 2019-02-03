@@ -7,11 +7,11 @@
           </agm-info-window>
           icon
     </agm-marker>
-    <agm-marker *ngFor="let loc of looLocations;let i= index" [latitude]="loc.looLatitude" [longitude]= "loc.looLongitude"  [iconUrl]="icon" (markerClick)="markerClicked(loc, i)">
-          <agm-info-window>
-            <h3><strong>Loo Cumulative General Rating::{{generalRating}}</strong></h3>
-            <h3><strong>Loo's Latitude::{{i.marLat}}</strong></h3>
-            <h3><strong>Loo's Longitude::{{i.marLng}}</strong></h3>
+    <agm-marker #gm *ngFor="let loc of looLocations;let i= index" [latitude]="loc.looLatitude" [longitude]= "loc.looLongitude"  [iconUrl]="icon" (markerClick)="markerClicked(loc, i)" (mouseOver)="onMouseOver(infoWindow,gm)">
+          <agm-info-window [disableAutoPan]="false" #infoWindow>
+            <h3><strong>Loo Cumulative General Rating::{{loc.generalRating}}</strong></h3>
+            <h3><strong>Loo's Latitude::{{loc.looLatitude}}</strong></h3>
+            <h3><strong>Loo's Longitude::{{loc.looLongitude}}</strong></h3>
           </agm-info-window>
     </agm-marker>
   </agm-map>

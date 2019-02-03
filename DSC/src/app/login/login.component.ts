@@ -33,12 +33,14 @@ export class LoginComponent implements OnInit {
         }
         else{
           alert("Need to login with right Credentials, before check-in or reviewing a Loo");
-          this.router.navigate(['/login']);
+          //this.router.navigate(['/login']);
           }
   }
 
   onSubmit(){
     //let accessToken=localStorage.getItem('accessToken');
      //var response=this.authenticationService.getUser().subscribe();
-    }
+     var response=this.authenticationService.login(this.looUser).subscribe();
+     this.router.navigate(['/checkin-loo']);
+   }
 }

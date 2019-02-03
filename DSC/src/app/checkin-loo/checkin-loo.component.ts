@@ -37,9 +37,5 @@ export class CheckinLooComponent implements OnInit {
   onSubmit(){
 
       var response=this.authenticationService.login(this.looUser).subscribe();
-      setTimeout(() => {
-          this.router.navigate(['/site']);
-        }
-        , 1000);
-      }
+    }
 }

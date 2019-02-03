@@ -61,7 +61,7 @@ export class LooComponent implements OnInit {
        console.log(this.loadComponent);
     }
 
-    OnSubmit(form: NgForm) {
+    OnSubmit() {
         debugger
         //submit the site and save the site id in Loo
         this.loo.looLatitude = this.lat;

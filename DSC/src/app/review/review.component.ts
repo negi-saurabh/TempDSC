@@ -21,6 +21,7 @@ export class ReviewComponent implements OnInit {
   marLat: string;
   marLng: string;
   loo: Loo;
+  parentMessage: false;
 
   constructor(private reviewService: ReviewService,private looService:LooService, private router:Router) { }
 
@@ -30,12 +31,14 @@ export class ReviewComponent implements OnInit {
     localStorage.setItem('purpose',"RL");
     this.user = localStorage.getItem('currentUser');
     this.token = localStorage.getItem('accessToken');
-    if(!!this.user && !!this.token){
-        this.islogin = true;
+    if(!!this.user && !!this.token)
+      {
+        this.islogin = true
+        //this.router.navigate(['/review']);
       } else
       {
         this.islogin = false;
-        this.router.navigate(['/find-loo']);
+        this.router.navigate(['/login']);
       }
 
   }

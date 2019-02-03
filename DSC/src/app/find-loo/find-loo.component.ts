@@ -57,7 +57,7 @@ export class FindLooComponent implements OnInit {
     this.looService.getNearbyLoos()
     .subscribe(loos =>{
       this.looLocations = loos;
-      debugger
+
       this.loo = loos[0];
     });
   }
@@ -73,10 +73,22 @@ export class FindLooComponent implements OnInit {
     this.marLat=loc.looLatitude;
     this.marLng=loc.looLongitude;
     this.generalRating = loc.generalRating;
-    localStorage.removeItem('purpose');
-    localStorage.setItem('purpose',"RL");
+    //localStorage.removeItem('purpose');
+    //localStorage.setItem('purpose',"RL");
     localStorage.setItem('markerLat',this.marLat.toString());
     localStorage.setItem('markerLong',this.marLng.toString());
-    this.router.navigate(['/login']);
+    this.router.navigate(['/review']);
+    }
+
+
+    onMouseOver(infoWindow, gm) {
+        debugger
+        if (gm.lastOpen != null) {
+            gm.lastOpen.close();
+        }
+
+        gm.lastOpen = infoWindow;
+
+        infoWindow.open();
     }
 }
